@@ -51,6 +51,7 @@ body {
     width: 75vw;
     display: flex;
     flex-direction: column;
+    padding: 15px;
 }
 header{
     width: 100%;
