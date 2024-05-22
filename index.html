@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add to Cart Page</title>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="media_query.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    
+</head>
+<body>
+    <div class="sidebar">
+        <div class="filter">
+            <h3 class="heading">Filter by Price:</h3>
+            <div class="btn">
+            <button onclick="filterProducts('less')"> > $2000</button>
+            <button onclick="filterProducts('between')">$2000 - $5000</button>
+            <button onclick="filterProducts('more')">> $5000</button>
+            <button onclick="resetFilter()">Reset Filter</button>
+            </div>
+            <!-- <a href="cart.html">Go To Cart</a> -->
+
+            <div class="filter">
+                <h3 class="heading">Sort by Price:</h3>
+                <div class="btn">
+                <button onclick="sortCart('low')">Low to High</button>
+                <button onclick="sortCart('high')">High to Low</button>
+            </div>
+            </div>
+    
+            <div id="cart-items">
+                <h2 class="heading">Cart</h2>
+                <ul id="cart-list">
+                    <!-- Cart items will be dynamically added here -->
+                </ul>
+                <p id="empty-cart-message">Your cart is empty.</p>
+                <p class="tp">Total cost : $<span id="total-price">0</span></p>
+                <p class="tp">Avg cost : $<span id="average-price">0</span></p>
+                
+                <button onclick="clearCart()" class="clearBtn">Clear Cart</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <header>
+            <h1>Marmeto</h1>
+        </header>
+        <div id="products-container">
+            <!-- Products will be dynamically added here -->
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
