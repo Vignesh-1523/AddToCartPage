@@ -1,0 +1,155 @@
+Define sample product data
+products = [
+    { id: 1, name: 'Product 1', price: 1500 },
+    { id: 2, name: 'Product 2', price: 2500 },
+    { id: 3, name: 'Product 3', price: 3500 },
+    { id: 4, name: 'Product 4', price: 4500 },
+    { id: 5, name: 'Product 5', price: 5500 }
+]
+
+Define empty cart array
+cart = []
+
+Function to render products
+BEGIN
+function renderProducts(products):
+     Initialize productContainer
+     SET productContainer : product-container class
+     SET productContainer value empty
+
+    To Display products on the page..
+
+     Iterate over products object :
+     For each product =>  
+         Initialize productElement 
+         SET productElement : New div element with class product-item
+         SET content of productElement : 
+            -product name
+            -product price
+            -Add to Cart button
+        Append productElement to productContainer
+END
+
+Function to add item to cart
+BEGIN
+function addToCart(productId):
+     Check if cart has less than 100 items
+     Find product by ID
+     Check if product already exists in cart
+     If exists, increment quantity, else add product to cart array with quantity 1
+
+     call renderCart function
+END
+
+Function to render cart
+BEIGN
+function renderCart():
+    Initialize cartList
+    SET cartList : tag with cart-list class
+    SET cartList value empty
+    Initialize and SET totalPrice : 0
+
+    Iterate over cart array 
+        for each item =>
+            Initialize and SET cartItem : New li element with class cart-item
+            SET content of cartItem : 
+                -item name 
+                -item price
+                -item quantity
+
+            Initialize removeButton
+            SET removeButton : New button element with class button
+            SET content of removeButton : X
+            
+            onclick function for removeButton
+                call removeCartItem(item's id) function
+
+            Append removeButton to cartItem
+            Append cartItem to cartList  
+
+        SET totalPrice : totalPrice + item price * item quantity 
+END
+
+SET content of total-price tag : totalPrice
+SET content of average-price tag : calculateAveragePrice() callback
+
+Initialize emptyCartMessage 
+SET emptyCartMessage : content of empty-cart-message tag
+
+IF cart array is empty :
+    display emptyCartMessage
+ELSE :
+    Remove emptyCartMessage
+       
+Function to remove item from cart
+BEGIN
+function removeCartItem(productId):
+     Remove item from cart using Filter method using productId
+     call renderCart()
+END
+
+Function to clear cart
+BEGIN
+function clearCart():
+     Empty the cart
+     call renderCart()
+END
+
+Function to filter products by price
+BEGIN
+function filterProducts(filterType):
+     Filter products based on filter type
+     Initialize filteredProducts
+        SWITCH filterType :
+            CASE 'less' :
+                SET filteredProducts : products.filter(product.price < 2000)
+                break
+            CASE 'between' :
+                SET filteredProducts : products.filter(product.price < 2000 AND product.price >= 5000)
+                break
+            CASE 'more' :
+                SET filteredProducts : products.filter(product.price > 5000)
+                break
+            DEFAULT :
+                filteredProducts = products
+        END SWITCH
+    
+    call renderProducts(filteredProducts)
+END
+
+Function to reset filter
+BEGIN
+function resetFilter():
+     call renderProducts(products)
+END
+
+Function to sort cart items
+BEGIN
+function sortCart(sortType):
+    Sort cart items based on sort type
+    SWITCH (sortType) :
+        CASE 'low' :
+            cart.sort(a.price - b.price)
+            BREAK
+        CASE 'high' :
+            cart.sort(a.price - b.price)
+            BREAK    
+        DEFAULT
+
+     call renderCart()
+END
+
+Function to calculate average price
+BEGIN
+function calculateAveragePrice():
+     Calculate average price of items in cart
+     IF cart array is empty :
+         RETURN 0
+     Initialize totalPrices
+     SET totalPrices : cart.reduce((acc, item) => acc + item.price * item.quantity, 0)
+
+     RETURN totalPrices / cart.length
+END
+
+Initial render of products
+call renderProducts(products)
