@@ -1,0 +1,39 @@
+[
+    {
+        "id": 1,
+        "name":"Product 1",
+        "price": 1500,
+        "image": "https://webapi3.adata.com/storage/product/xenia_15g_plk_002_listing_page.png"
+    },
+    {
+        "id": 2,
+        "name": "Product 2",
+        "price": 2500,
+        "image": "https://www.intel.com/content/dam/www/central-libraries/us/en/images/2022-08/chromebook-product-image-transparent-background.png.rendition.intel.web.576.324.png"
+    },
+    {
+        "id": 3,
+        "name":"Product 3",
+        "price": 3500,
+        "image": "https://png.pngtree.com/png-clipart/20230418/original/pngtree-3d-laptop-original-design-png-image_9065802.png"
+    },
+    {
+        "id": 4,
+        "name":"Product 4",
+        "price": 4500,
+        "image": "https://png.pngtree.com/png-vector/20240208/ourlarge/pngtree-laptop-with-colorful-screen-png-image_11731791.png"
+    },
+    {
+        "id": 5,
+        "name":"Product 5",
+        "price": 5500,
+        "image": "https://png.pngtree.com/png-clipart/20240403/original/pngtree-a-laptop-with-colorful-screen-png-image_14745825.png"
+    },
+    {
+        "id": 6,
+        "name":"Product 6",
+        "price": 6500,
+        "image": "https://png.pngtree.com/png-vector/20240310/ourmid/pngtree-laptop-with-colorful-screen-isolated-on-white-background-clipping-path-included-png-image_11890961.png"
+    }
+
+]
