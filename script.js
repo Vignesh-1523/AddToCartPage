@@ -4,6 +4,7 @@
     { id: 2, name: 'Product 2', price: 2500, image: 'https://img.freepik.com/free-photo/view-3d-laptop-device-with-screen-keyboard_23-2150714071.jpg?size=338&ext=jpg&ga=GA1.1.553209589.1715040000&semt=ais' },
     { id: 3, name: 'Product 3', price: 3500, image: 'https://media.cnn.com/api/v1/images/stellar/prod/210628154025-dell-xps-13-product-card.jpg?q=x_0,y_0,h_1125,w_1999,c_fill/h_720,w_1280' },
     { id: 4, name: 'Product 4', price: 4500, image: 'https://my-media.apjonlinecdn.com/magefan_blog/how-to-find-hp-laptop-model-number-hero.webp' },
+    { id: 5, name: 'Product 5', price: 5500, image: 'https://i0.wp.com/www.alphr.com/wp-content/uploads/2022/03/How-to-Find-the-Model-Number-on-a-Laptop.jpg?fit=2000%2C1125&ssl=1' },
     { id: 5, name: 'Product 5', price: 5500, image: 'https://i0.wp.com/www.alphr.com/wp-content/uploads/2022/03/How-to-Find-the-Model-Number-on-a-Laptop.jpg?fit=2000%2C1125&ssl=1' }
 ];
 
