@@ -1,158 +1,59 @@
- Define sample product data
+Define sample product data
 products = [
-    { id: 1, name: 'Product 1', price: 1500, image: 'image_url_1' },
-    { id: 2, name: 'Product 2', price: 2500, image: 'image_url_2' },
-    { id: 3, name: 'Product 3', price: 3500, image: 'image_url_3' },
-    { id: 4, name: 'Product 4', price: 4500, image: 'image_url_4' },
-    { id: 5, name: 'Product 5', price: 5500, image: 'image_url_5' }
+    { id: 1, name: 'Product 1', price: 1500 },
+    { id: 2, name: 'Product 2', price: 2500 },
+    { id: 3, name: 'Product 3', price: 3500 },
+    { id: 4, name: 'Product 4', price: 4500 },
+    { id: 5, name: 'Product 5', price: 5500 }
 ]
 
+Define cart array
 cart = []
 
- Function to render products
+Function to render products
 function renderProducts(products):
-     Get products container element
-    productsContainer = document.getElementById('products-container')
-     Clear previous content
-    productsContainer.innerHTML = ''
-     Loop through products
-    for each product in products:
-         Create product element
-        productElement = createProductElement(product)
-         Append product element to products container
-        productsContainer.appendChild(productElement)
+     Display products on the page
 
- Function to create product element
-function createProductElement(product):
-     Create a div element for product
-    productElement = document.createElement('div')
-     Add class 'product' to product element
-    productElement.classList.add('product')
-     Set inner HTML of product element
-    productElement.innerHTML = `
-        <h3>${product.name}</h3>
-        <div class="image">
-            <img src="${product.image}" alt="${product.name}">
-        </div>
-        <div class="selection">
-            <p> <span>$</span> ${product.price}</p>
-            <button onclick="addToCart(${product.id})">Add to Cart</button>
-        </div>
-    `
-    return productElement
-
- Function to add item to cart
+Function to add item to cart
 function addToCart(productId):
-     Check if cart length is less than 100
-    if cart.length >= 100:
-         Show alert message
-        alert('You cannot add more than 100 products to the cart.')
-         Exit function
-        return
+     Check if cart has less than 100 items
      Find product by ID
-    product = products.find(p => p.id === productId)
-     Find if product already exists in cart
-    existingCartItem = cart.find(item => item.id === productId)
-     If product exists in cart
-    if existingCartItem:
-         Increment quantity of existing cart item
-        existingCartItem.quantity++
-    else:
-         Add product to cart with quantity 1
-        cart.push({ ...product, quantity: 1 })
+     Check if product already exists in cart
+     If exists, increment quantity, else add product to cart with quantity 1
      Render cart
-    renderCart()
 
- Function to render cart
+Function to render cart
 function renderCart():
-     Get cart list element
-    cartList = document.getElementById('cart-list')
-     Clear previous content
-    cartList.innerHTML = ''
-     Initialize total price
-    totalPrice = 0
-     Loop through cart items
-    for each item in cart:
-         Create cart item element
-        cartItem = createCartItemElement(item)
-         Append cart item element to cart list
-        cartList.appendChild(cartItem)
-         Calculate total price
-        totalPrice += item.price * item.quantity
-     Set total price in HTML
-    document.getElementById('total-price').textContent = totalPrice
-     Set average price in HTML
-    document.getElementById('average-price').textContent = calculateAveragePrice()
-     Show or hide empty cart message
-    if cart.length === 0:
-        document.getElementById('empty-cart-message').style.display = 'block'
-    else:
-        document.getElementById('empty-cart-message').style.display = 'none'
+     Display cart items and total price on the page
 
- Function to create cart item element
-function createCartItemElement(item):
-     Create a li element for cart item
-    cartItem = document.createElement('li')
-     Add class 'cart-item' to cart item
-    cartItem.classList.add('cart-item')
-     Set text content of cart item
-    cartItem.textContent = `${item.name} - $ ${item.price} [ Qty ${item.quantity} ]`
-     Create remove button
-    removeButton = document.createElement('button')
-     Add class 'removeBtn' to remove button
-    removeButton.classList.add('removeBtn')
-     Set inner HTML of remove button
-    removeButton.innerHTML = "X"
-     Add click event listener to remove button
-    removeButton.onclick = () => removeCartItem(item.id)
-     Append remove button to cart item
-    cartItem.appendChild(removeButton)
-    return cartItem
-
- Function to remove item from cart
+Function to remove item from cart
 function removeCartItem(productId):
-     Filter out item with given ID from cart
-    cart = cart.filter(item => item.id !== productId)
+     Remove item from cart
      Render cart
-    renderCart()
 
- Function to clear cart
+Function to clear cart
 function clearCart():
      Empty the cart
-    cart = []
      Render cart
-    renderCart()
 
- Function to filter products
+Function to filter products by price
 function filterProducts(filterType):
      Filter products based on filter type
-    filteredProducts = filterProductsByType(filterType)
      Render filtered products
-    renderProducts(filteredProducts)
 
- Function to reset filter
+Function to reset filter
 function resetFilter():
      Render all products
-    renderProducts(products)
 
- Function to sort cart items
+Function to sort cart items
 function sortCart(sortType):
      Sort cart items based on sort type
-    if sortType === 'low':
-        cart.sort((a, b) => a.price - b.price)
-    else if sortType === 'high':
-        cart.sort((a, b) => b.price - a.price)
      Render cart
-    renderCart()
 
- Function to calculate average price
+Function to calculate average price
 function calculateAveragePrice():
-     Calculate total prices of all cart items
-    totalPrices = cart.reduce((acc, item) => acc + item.price * item.quantity, 0)
-     Calculate average price
-    averagePrice = totalPrices / cart.length
-     Return average price with two decimal places
-    return averagePrice.toFixed(2)
+     Calculate average price of items in cart
+     Return average price
 
- Initial render of products
+Initial render of products
 renderProducts(products)
